@@ -16,4 +16,7 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+// 是否存在该手机号的请求
+Route::post("register/isRegistered", "IsRegisteredController@isRegistered");
+
 

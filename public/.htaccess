@@ -13,3 +13,6 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+
+ErrorDocument 404 "你是傻逼吧？"
