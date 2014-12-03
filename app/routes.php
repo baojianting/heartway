@@ -19,4 +19,5 @@ Route::get('/', function()
 // 是否存在该手机号的请求
 Route::post("register/isRegistered", "IsRegisteredController@isRegistered");
 
+Route::post("register/register", "");
 

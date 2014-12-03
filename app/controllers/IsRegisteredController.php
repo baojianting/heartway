@@ -17,9 +17,9 @@ class IsRegisteredController extends BaseController {
         if(!isset($phoneNumber) || empty($phoneNumber)) {
             return Constant::$RETURN_FAIL;
         } else {
-            $user = HwUser::whereRaw(Constant::$PARAM_PHONE_NUM." = ?", array($phoneNumber))->get();
-            // print_r($user);
-            if(!empty($user)) {
+            $count = HwUser::whereRaw(Constant::$PARAM_PHONE_NUM." = ?", array($phoneNumber))->count();
+
+            if(!empty($count)) {
                 return Constant::$RETURN_SUCCESS;
             } else {
                 return Constant::$RETURN_FAIL;
