@@ -41,7 +41,7 @@ class LoginController extends BaseController {
 
                 // 查找该用户的好友信息
                 $friends = $users[0]->friends;
-                print(count($friends));
+                // print(count($friends));
                 // 存放好友信息的数组
                 $friendsArr = array();
                 // 遍历好友的信息
