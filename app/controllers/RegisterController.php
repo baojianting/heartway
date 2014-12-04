@@ -8,7 +8,7 @@
 
 require_once __DIR__. "/../Utils/Constant.php";
 require_once __DIR__. "/../Utils/HeartwayUtils.php";
-require_once __DIR__. "/../Utils/EmCHatUtil.php";
+require_once __DIR__. "/../Utils/EmChatUtil.php";
 /*
  * 注册用户的处理器
  */
