@@ -39,6 +39,7 @@ class RegisterController extends BaseController {
                 $newUser->password = $password;
                 $newUser->islock = 0;
                 $newUser->gender = 0;
+                $newUser->avatar = 0;
                 $newUser->sub_account = $phoneNumberMd5;
 
                 // 新建数据

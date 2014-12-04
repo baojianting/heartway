@@ -24,3 +24,7 @@ Route::post("register/isRegistered", "IsRegisteredController@isRegistered");
 Route::post("register/register", "RegisterController@register");
 // Route::get("register/register", "RegisterController@register");
 
+// 登录账号
+Route::post("login", "LoginController@login");
+Route::get("login", "LoginController@login");
+

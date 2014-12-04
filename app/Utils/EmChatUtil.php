@@ -141,4 +141,10 @@ class EmChatUtil {
 
     }
 
+    public function deleteUser($subAccount) {
+        $url = $this->url."users/".$subAccount;
+
+
+    }
+
 } 

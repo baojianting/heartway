@@ -1,6 +1,6 @@
 import Util
 
-test_data = {'phone_number': '187929751333', 'password': '1234'}
+test_data = {'phone_number': '18792975133', 'password': '1234'}
 
 # requrl = 'http://localhost:8001/heartway/public/index.php/register/register'
 requrl = 'http://120.27.40.13:8001/heartway/public/index.php/register/register'
