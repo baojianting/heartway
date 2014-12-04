@@ -13,11 +13,14 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+    return "hello";
+	// return View::make('hello');
 });
 
 // 是否存在该手机号的请求
 Route::post("register/isRegistered", "IsRegisteredController@isRegistered");
 
-Route::post("register/register", "");
+// 注册账号信息
+Route::post("register/register", "RegisterController@register");
+// Route::get("register/register", "RegisterController@register");
 
