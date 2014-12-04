@@ -22,5 +22,5 @@ Route::post("register/isRegistered", "IsRegisteredController@isRegistered");
 
 // 注册账号信息
 Route::post("register/register", "RegisterController@register");
-Route::get("register/register", "RegisterController@register");
+// Route::get("register/register", "RegisterController@register");
 
