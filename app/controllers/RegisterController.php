@@ -18,8 +18,8 @@ class RegisterController extends BaseController {
     public function register() {
         // 获取手机号和密码
 
-        $phoneNumber = $_POST[Constant::$PARAM_PHONE_NUM];
-        $password = $_POST[Constant::$PARAM_PWD];
+        $phoneNumber = $_GET[Constant::$PARAM_PHONE_NUM];
+        $password = $_GET[Constant::$PARAM_PWD];
 
         if(isset($phoneNumber) && isset($password)) {
 
