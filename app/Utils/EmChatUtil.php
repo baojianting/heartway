@@ -128,7 +128,7 @@ class EmChatUtil {
     public function authorizeRegister($username, $password) {
         $url = $this->url. "users";
         $token = $this->getToken();
-        print($token);
+        // print($token);
 
         $headers = array('Content-Type'=>'application/json', 'Authorization'=>'Bearer '.$token);
         $options = array();

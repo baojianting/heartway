@@ -29,7 +29,7 @@ class RegisterController extends BaseController {
             // 发送环信添加用户请求
             $emChatUtil = new EmChatUtil();
             $result = $emChatUtil->authorizeRegister($phoneNumberMd5, $password);
-
+            // print_r($result);
             // 如果返回成功
             if(isset($result['entities'])) {
                 $newUser = new HwUser();
@@ -51,6 +51,8 @@ class RegisterController extends BaseController {
                 else {
                     return Constant::$RETURN_FAIL;
                 }
+            } else {
+                return Constant::$RETURN_FAIL;
             }
 
         } else {
