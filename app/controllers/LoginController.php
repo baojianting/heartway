@@ -16,8 +16,8 @@ class LoginController extends BaseController {
      */
     public function login() {
 
-        $userName = $_GET[Constant::$PARAM_PHONE_NUM];
-        $password = $_GET[Constant::$PARAM_PWD];
+        $userName = $_POST[Constant::$PARAM_PHONE_NUM];
+        $password = $_POST[Constant::$PARAM_PWD];
         // 如果账号密码不为空
         if(!empty($userName) && !empty($password)) {
             $users = HwUser::whereRaw('phone_number = ? and password = ?', array($userName, $password))->get();

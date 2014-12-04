@@ -26,5 +26,5 @@ Route::post("register/register", "RegisterController@register");
 
 // 登录账号
 Route::post("login", "LoginController@login");
-Route::get("login", "LoginController@login");
+// Route::get("login", "LoginController@login");
 
