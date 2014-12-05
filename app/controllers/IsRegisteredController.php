@@ -12,6 +12,11 @@ class IsRegisteredController extends BaseController {
     // 获取是否存在该phone_number的值
     public function isRegistered() {
         include_once __DIR__."/../Utils/Constant.php";
+
+        if(!isset($_POST[Constant::$PARAM_PHONE_NUM])) {
+            return Constant::$RETURN_FAIL;
+        }
+
         $phoneNumber = $_POST[Constant::$PARAM_PHONE_NUM];
 
         if(!isset($phoneNumber) || empty($phoneNumber)) {
