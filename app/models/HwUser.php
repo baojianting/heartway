@@ -23,4 +23,8 @@ class HwUser extends Eloquent {
         return $this->belongsToMany("HwUser", "hw_friend_relationship", "subject_user_id", "friend_user_id");
     }
 
+    public function hasGroups() {
+        return $this->belongsToMany("HwUser", "hw_group_member", "hw_user_id", "hw_group_id");
+    }
+
 } 

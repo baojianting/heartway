@@ -71,6 +71,23 @@ class LoginController extends BaseController {
                     }
                 }
                 $dataArr['friends'] = $friendsArr;
+
+                // 查找该好友群组消息
+                $groupsArr = array();
+                $groups = $users[0]->hasGroups;
+                foreach($groups as $group) {
+                    $groupArr = array();
+                    $groupArr['id'] = $group->id;
+                    $groupArr['group_name'] = $group->group_name;
+                    $groupArr['description'] = $group->description;
+                    $groupArr['create_time'] = $group->create_time;
+                    $groupArr['creator_id'] = $group->creator_id;
+                    $groupArr['creator_nickname'] = $group->creator_nickname;
+                    array_push($groupsArr, $groupArr);
+                }
+
+                $dataArr['groups'] = $groupsArr;
+
                 // 存储是否成功的数组
                 // $statusArr = array('status'=>'success');
                 $resultArr = array();
