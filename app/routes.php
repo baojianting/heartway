@@ -30,5 +30,5 @@ Route::post("login", "LoginController@login");
 
 // 删除用户
 Route::post("delete/user", "DeleteUserController@deleteUser");
-Route::get("delete/user", "DeleteUserController@deleteUser");
+// Route::get("delete/user", "DeleteUserController@deleteUser");
 

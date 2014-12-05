@@ -13,8 +13,8 @@ class DeleteUserController extends BaseController {
 
     public function deleteUser() {
         // 删除用户
-        if(isset($_GET['user_name'])) {
-            $userName = $_GET['user_name'];
+        if(isset($_POST['user_name'])) {
+            $userName = $_POST['user_name'];
             $userNameMd5 = md5($userName);
             // print("md5------------->".$userNameMd5);
             // 开启事务
