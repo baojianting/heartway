@@ -18,6 +18,7 @@ class RegisterController extends BaseController {
     public function register() {
 
         if(!isset($_POST[Constant::$PARAM_PHONE_NUM]) || !isset($_POST[Constant::$PARAM_PWD])) {
+            // print "1111111111<br/>";
             return Constant::$RETURN_FAIL;
         }
 
@@ -54,19 +55,23 @@ class RegisterController extends BaseController {
                 // print_r($result);
                 // 如果返回成功
                 if(isset($result['entities'])) {
+                    // print "2221111<br/>";
                     DB::commit();
                     return Constant::$RETURN_SUCCESS;
                 } else {
+                    // print "33311111<br/>";
                     DB::rollback();
                     return Constant::$RETURN_FAIL;
                 }
             }
             else {
+                // print "444411111<br/>";
                 // 回滚
                 DB::rollback();
                 return Constant::$RETURN_FAIL;
             }
         } else {
+            // print "55511111<br/>";
             return Constant::$RETURN_FAIL;
         }
 

@@ -22,9 +22,13 @@ Route::post("register/isRegistered", "IsRegisteredController@isRegistered");
 
 // 注册账号信息
 Route::post("register/register", "RegisterController@register");
-// Route::get("register/register", "RegisterController@register");
+Route::get("register/register", "RegisterController@register");
 
 // 登录账号
 Route::post("login", "LoginController@login");
 // Route::get("login", "LoginController@login");
+
+// 删除用户
+Route::post("delete/user", "DEleteUserController@deleteUser");
+// Route::get("delete/user", "DEleteUserController@deleteUser");
 

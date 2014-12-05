@@ -45,7 +45,7 @@ class EmChatUtil {
      *
      */
     public function postCurl($url, $option, $header =
-                    array('Accept'=>'application/json', 'Content-Type'=>'application/json'), $type = 'POST') {
+                    array('Accept: application/json', 'Content-Type: application/json'), $type = 'POST') {
         $curl = curl_init();
         // 访问地址
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -91,7 +91,7 @@ class EmChatUtil {
 
         // 如果超过了默认的时间
         if(!isset($origRes['expires_in']) || $origRes['expires_in'] < time()) {
-
+            print("send POST token<br/>");
             $url = $this->url. "token";
             $options = array();
             $options['grant_type'] = 'client_credentials';
@@ -128,22 +128,26 @@ class EmChatUtil {
     public function authorizeRegister($username, $password) {
         $url = $this->url. "users";
         $token = $this->getToken();
-        // print($token);
+        // print("tokens---------->".$token);
 
-        $headers = array('Content-Type'=>'application/json', 'Authorization'=>'Bearer '.$token);
+        $headers = array('Authorization: Bearer '.$token);
         $options = array();
         $options['username'] = $username;
         $options['password'] = $password;
         // 发送注册请求
         $result = $this->postCurl($url, $options, $headers);
-
+        // print("after post Request");
         return $result;
 
     }
 
     public function deleteUser($subAccount) {
         $url = $this->url."users/".$subAccount;
+        $token = $this->getToken();
+        $header = array('Authorization: Bearer '.$token);
+        $result = $this->postCurl($url,'', $header, $type = 'DELETE' );
 
+        return $result;
 
     }
 
