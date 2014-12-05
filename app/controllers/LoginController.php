@@ -10,11 +10,25 @@ require_once __DIR__."/../Utils/Constant.php";
 
 class LoginController extends BaseController {
 
+
+    private static $STATUS = 'status';
+    private static $DATA = 'data';
+    private static $SUCCESS_STATUS = 'success';
+    private static $WRONG_PASSWORD_OR_USERNAME = 'password_username_error';
+    private static $FAIL_STATUS = 'fail';
     /*
      * 用户发送登录信息的时候进行登录处理
      *
      */
     public function login() {
+
+        // 如果没有传递两个参数
+        if(!isset($_POST[Constant::$PARAM_PHONE_NUM]) || !isset($_POST[Constant::$PARAM_PWD])) {
+            $resultArr = array();
+            $resultArr['status'] = self::$FAIL_STATUS;
+            return json_encode($resultArr);
+        }
+
 
         $userName = $_POST[Constant::$PARAM_PHONE_NUM];
         $password = $_POST[Constant::$PARAM_PWD];
@@ -31,13 +45,13 @@ class LoginController extends BaseController {
                 $mySignature = $users[0]->signature;
 
                 // 个人信息的数组
-                $myInfoArr = array();
-                $myInfoArr['user_name'] = $myUserName;
-                $myInfoArr['nick_name'] = $myNickName;
-                $myInfoArr['password'] = $myPassword;
-                $myInfoArr['avatar'] = $myAvatar;
-                $myInfoArr['gender'] = $myGender;
-                $myInfoArr['signature'] = $mySignature;
+                $dataArr = array();
+                $dataArr['user_name'] = $myUserName;
+                $dataArr['nick_name'] = $myNickName;
+                $dataArr['password'] = $myPassword;
+                $dataArr['avatar'] = $myAvatar;
+                $dataArr['gender'] = $myGender;
+                $dataArr['signature'] = $mySignature;
 
                 // 查找该用户的好友信息
                 $friends = $users[0]->friends;
@@ -56,14 +70,16 @@ class LoginController extends BaseController {
                         array_push($friendsArr, $friendArr);
                     }
                 }
+                $dataArr['friends'] = $friendsArr;
                 // 存储是否成功的数组
                 // $statusArr = array('status'=>'success');
                 $resultArr = array();
                 // 构造最终返回的数组
                 // array_push($resultArr, $statusArr);
                 $resultArr['status'] = 'success';
-                $resultArr['my_info'] = $myInfoArr;
-                $resultArr['friends'] = $friendsArr;
+                $resultArr['data'] = $dataArr;
+                // $resultArr['my_info'] = $myInfoArr;
+                // $resultArr['friends'] = $friendsArr;
                 // array_push($resultArr, $myInfoArr);
                 // array_push($resultArr, $friendsArr);
 
@@ -73,14 +89,14 @@ class LoginController extends BaseController {
             // 如果查找不到该用户信息
             else {
                 // $statusArr = array('status'=>'fail');
-                $resultArr = array('status'=>'fail');
+                $resultArr = array(self::$STATUS=>self::$WRONG_PASSWORD_OR_USERNAME);
                 return json_encode($resultArr);
             }
 
         }
         // 如果账号密码为空
         else {
-            $resultArr = array('status'=>'fail');
+            $resultArr = array(self::$STATUS=>self::$FAIL_STATUS);
             return json_encode($resultArr);
         }
     }
