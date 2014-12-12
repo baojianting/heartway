@@ -42,7 +42,11 @@ class LoginController extends BaseController {
                 $myPassword = $users[0]->password;
                 $myAvatar = $users[0]->avatar;
                 $myGender = $users[0]->gender;
-                $mySignature = $users[0]->signature;
+                if(!isset($users[0]->signature) || empty($users[0]->signature)) {
+                    $mySignature = "";
+                } else {
+                    $mySignature = $users[0]->signature;
+                }
 
                 // 个人信息的数组
                 $dataArr = array();
@@ -65,7 +69,12 @@ class LoginController extends BaseController {
                         $friendArr['nick_name'] = $friend->nick_name;
                         $friendArr['avatar'] = $friend->avatar;
                         $friendArr['gender'] = $friend->gender;
-                        $friendArr['signature'] = $friend->signature;
+                        if(!isset($friend->signature) || empty($friend->signature)) {
+                            $friendArr['signature'] = "";
+                        } else {
+                            $friendArr['signature'] = $friend->signature;
+                        }
+
                         $friendArr['user_name'] = $friend->sub_account;
                         array_push($friendsArr, $friendArr);
                     }
