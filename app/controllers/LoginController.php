@@ -89,7 +89,7 @@ class LoginController extends BaseController {
                     $groupArr = array();
                     $groupArr['id'] = $group->id;
                     $groupArr['group_name'] = $group->group_name;
-                    $groupArr['description'] = $group->description;
+                    $groupArr['group_description'] = $group->description;
                     $groupArr['create_time'] = $group->create_time;
                     $groupArr['creator_id'] = $group->creator_id;
                     $groupArr['creator_nickname'] = $group->creator_nickname;
