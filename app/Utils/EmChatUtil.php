@@ -141,6 +141,11 @@ class EmChatUtil {
 
     }
 
+
+    /*
+     * 删除环信中的用户信息
+     *
+     */
     public function deleteUser($subAccount) {
         $url = $this->url."users/".$subAccount;
         $token = $this->getToken();
@@ -149,6 +154,18 @@ class EmChatUtil {
 
         return $result;
 
+    }
+
+    /*
+     *  给某人添加好友
+     *
+     */
+    public function addFriend($mySubAccount, $youSubAccount) {
+        $url = $this->url. "users/". $mySubAccount. "/contacts/users/". $youSubAccount;
+        $token =$this->getToken();
+        $header = array('Authorization: Bearer '.$token);
+        $result = $this->postCurl($url, '', $header);
+        return $result;
     }
 
 } 

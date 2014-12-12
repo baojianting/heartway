@@ -12,8 +12,8 @@ class LoginController extends BaseController {
 
 
     private static $STATUS = 'status';
-    private static $DATA = 'data';
-    private static $SUCCESS_STATUS = 'success';
+    // private static $DATA = 'data';
+    // private static $SUCCESS_STATUS = 'success';
     private static $WRONG_PASSWORD_OR_USERNAME = 'password_username_error';
     private static $FAIL_STATUS = 'fail';
     /*
@@ -92,13 +92,8 @@ class LoginController extends BaseController {
                 // $statusArr = array('status'=>'success');
                 $resultArr = array();
                 // 构造最终返回的数组
-                // array_push($resultArr, $statusArr);
                 $resultArr['status'] = 'success';
                 $resultArr['data'] = $dataArr;
-                // $resultArr['my_info'] = $myInfoArr;
-                // $resultArr['friends'] = $friendsArr;
-                // array_push($resultArr, $myInfoArr);
-                // array_push($resultArr, $friendsArr);
 
                 return json_encode($resultArr);
 
@@ -109,7 +104,6 @@ class LoginController extends BaseController {
                 $resultArr = array(self::$STATUS=>self::$WRONG_PASSWORD_OR_USERNAME);
                 return json_encode($resultArr);
             }
-
         }
         // 如果账号密码为空
         else {
