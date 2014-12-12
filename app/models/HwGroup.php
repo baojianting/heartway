@@ -9,7 +9,7 @@
 class HwGroup extends Eloquent {
 
     // 关联表名
-    protected $table = "hw_user";
+    protected $table = "hw_group";
     // 不设定数据库中的updated_at 和created_at字段
     public $timestamps = false;
 

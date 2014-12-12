@@ -75,6 +75,7 @@ class LoginController extends BaseController {
                 // 查找该好友群组消息
                 $groupsArr = array();
                 $groups = $users[0]->hasGroups;
+                // print($users[0]->id);
                 foreach($groups as $group) {
                     $groupArr = array();
                     $groupArr['id'] = $group->id;
