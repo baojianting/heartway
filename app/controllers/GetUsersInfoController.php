@@ -47,6 +47,9 @@ class GetUsersInfoController extends BaseController {
         // 如果是POST请求
         if($_SERVER['REQUEST_METHOD'] == "POST") {
             // print("POST method");
+            if(!isset($_POST['usernames'])) {
+                return Constant::$RETURN_FAIL;
+            }
             $reqStr = $_POST['usernames'];
             // print($reqStr);
             $reqArr = explode(",", $reqStr);

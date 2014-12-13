@@ -36,3 +36,10 @@ Route::get("delete/user", "DeleteUserController@deleteUser");
 Route::post("users/info", "GetUsersInfoController@getUsersInfo");
 // Route::get("users/info", "GetUsersInfoController@getUsersInfo");
 
+// 查找好友信息
+Route::post("user/find", "FindUserController@findUser");
+// Route::get("user/find", "FindUserController@findUser");
+
+// 添加好友
+Route::post("user/add", "AddUserController@addUser");
+Route::get("user/add", "AddUserController@addUser");
