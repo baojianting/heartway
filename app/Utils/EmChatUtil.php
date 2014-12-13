@@ -168,4 +168,16 @@ class EmChatUtil {
         return $result;
     }
 
+    /*
+    *  修改用户昵称
+    */
+    public function changeNickName($nickName) {
+        $url = $this->url. "users/". $nickName;
+        $token = $this->getToken();
+        $headers = array("Authorization: Bearer ".$token);
+        $type = "PUT";
+        $result = $this->postCurl($url, "", $headers, $type);
+        return $result;
+    }
+
 } 

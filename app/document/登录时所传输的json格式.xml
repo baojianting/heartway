@@ -1,0 +1,48 @@
+登陆成功时：
+{
+	"status": "success",	
+	"data": {
+		"user_name": "b6d767d2f8ed5d21a44b0e5886680cb9",
+		"nick_name": "yuxi",
+		"password": "234",
+		"avatar": null,
+		"gender": 0,
+		"signature": null,
+		"friends":[
+		{
+			"nick_name": "hehe",
+			"avatar": null, 
+			"gender": 0,
+			"signature": null,
+			"user_name": "sfdsfdsf"
+		},
+		{
+			"nick_name": "23424",
+			"avatar": null, 
+			"gender": 0,
+			"signature": "sdfdsgfg",
+			"user_name": "sfdsfdsfaasdsad"
+		}],
+		"groups":[
+		{
+			"id":_______,
+			"group_name":_____,
+			"group_description":____,
+			"create_time":____,
+			"creator_id":______,
+			"creator_nickname":____
+		}
+		]
+		}
+	},
+}
+
+登录失败： 
+{
+	"status": "fail"
+}
+
+账号或者密码错误:
+{
+	"status": "password_username_error"
+}
