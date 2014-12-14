@@ -35,7 +35,7 @@ class FindUserController extends BaseController {
                 }
                 $userArr['gender'] = $users[0]->gender;
                 $userArr['avatar'] = $users[0]->avatar;
-                $userArr['sub_account'] = $users[0]->sub_account;
+                $userArr['username'] = $users[0]->sub_account;
 
                 return json_encode($userArr);
 

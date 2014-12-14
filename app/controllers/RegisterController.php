@@ -40,6 +40,7 @@ class RegisterController extends BaseController {
             $newUser->islock = 0;
             $newUser->gender = 0;
             $newUser->avatar = 0;
+            $newUser->signature = "";
             $newUser->sub_account = $phoneNumberMd5;
 
             // 新建数据
