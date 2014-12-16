@@ -25,8 +25,8 @@ class AddUserController extends BaseController {
             $yourPhoneNum = $_POST['your_phone_number'];
 
             // 通过手机号来获取id号码
-            $myInfo = HwUser::whereRaw('phone_number = ?', array($myPhoneNum))->get();
-            $yourInfo = HwUser::whereRaw('phone_number = ?', array($yourPhoneNum))->get();
+            $myInfo = HwUser::whereRaw('sub_account = ?', array($myPhoneNum))->get();
+            $yourInfo = HwUser::whereRaw('sub_account = ?', array($yourPhoneNum))->get();
             if(count($myInfo) != 1 || count($yourInfo) != 1) {
                 // echo("用户信息不存在");
                 return Constant::$RETURN_FAIL;

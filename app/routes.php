@@ -28,6 +28,9 @@ Route::post("register/register", "RegisterController@register");
 Route::post("login", "LoginController@login");
 // Route::get("login", "LoginController@login");
 
+// 简单登录
+Route::post("singlelogin", "SingleLoginController@singleLogin");
+// Route::get("singlelogin", "SingleLoginController@singleLogin");
 // 删除用户
 Route::post("delete/user", "DeleteUserController@deleteUser");
 // Route::get("delete/user", "DeleteUserController@deleteUser");
