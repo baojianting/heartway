@@ -180,4 +180,13 @@ class EmChatUtil {
         return $result;
     }
 
+    public function delFriend($mySubAccount,$yourSubAccount) {
+        $url = $this->url. "users/". $mySubAccount. "/contacts/users/". $yourSubAccount;
+        $token =$this->getToken();
+        $header = array('Authorization: Bearer '.$token);
+        $method = "DELETE";
+        $result = $this->postCurl($url, '', $header, $method);
+        return $result;
+    }
+
 } 

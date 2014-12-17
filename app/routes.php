@@ -46,3 +46,7 @@ Route::post("user/find", "FindUserController@findUser");
 // 添加好友
 Route::post("user/add", "AddUserController@addUser");
 // Route::get("user/add", "AddUserController@addUser");
+
+// 删除好友
+Route::post("user/deleteFriend", "DeleteFriendShipController@deleteFriendShip");
+// Route::get("user/deleteFriend", "DeleteFriendShipController@deleteFriendShip");
