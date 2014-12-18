@@ -38,15 +38,21 @@ class AddUserController extends BaseController {
             $myAccount = $myInfo[0]->sub_account;
             $yourAccount = $yourInfo[0]->sub_account;
 
-
+            // echo("myId: ".$myId. "; yourId: ".$yourId);
             DB::beginTransaction();
-            DB::insert('insert into hw_friend_relationship(subject_user_id, friend_user_id) values(?, ?), (?, ?)',
-                        array($myId, $yourId, $yourId, $myId));
+            try {
+                DB::insert('insert into hw_friend_relationship(subject_user_id, friend_user_id) values(?, ?), (?, ?)',
+                    array($myId, $yourId, $yourId, $myId));
+            } catch(Exception $e) {
+                DB::rollback();
+                return Constant::$HAS_FRIEND;
+            }
+
 
             // 给环信发送添加好友请求
             $emChatUtil = new EmChatUtil();
             $firstResultArr = $emChatUtil->addFriend($myAccount, $yourAccount);
-            // print_r($firstResultArr);
+            print_r($firstResultArr);
             if(!isset($firstResultArr['entities'])) {
                 DB::rollback();
                 return Constant::$RETURN_FAIL;

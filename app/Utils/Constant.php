@@ -25,5 +25,9 @@ class Constant {
     static $RETURN_SUCCESS = "success";
     static $RETURN_FAIL = "fail";
 
+    static $HAS_FRIEND = "already_friends";
+    static $NOT_FRIEND = "not_friend";
+
+
 
 } 

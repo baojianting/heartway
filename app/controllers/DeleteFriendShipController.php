@@ -23,7 +23,7 @@ class DeleteFriendShipController extends BaseController {
             $myInfo = HwUser::whereRaw('sub_account = ?', array($myPhoneNum))->get();
             $yourInfo = HwUser::whereRaw('sub_account = ?', array($yourPhoneNum))->get();
             if(count($myInfo) != 1 || count($yourInfo) != 1) {
-                echo("用户信息不存在");
+                // echo("用户信息不存在");
                 return Constant::$RETURN_FAIL;
             }
             $myId = $myInfo[0]->id;
@@ -35,8 +35,18 @@ class DeleteFriendShipController extends BaseController {
 
 
             DB::beginTransaction();
-            DB::delete('delete from hw_friend_relationship where (subject_user_id = ? and friend_user_id = ?) or
+            $rows = DB::delete('delete from hw_friend_relationship where (subject_user_id = ? and friend_user_id = ?) or
                   (subject_user_id = ? and friend_user_id = ?)', array($myId, $yourId, $yourId, $myId));
+            // echo($rows);
+            if($rows == 0) {
+                DB::rollback();
+                return Constant::$NOT_FRIEND;
+            }
+            else if($rows == 1) {
+                DB::rollback();
+                return Constant::$RETURN_FAIL;
+            }
+
             // DB::insert('insert into hw_friend_relationship(subject_user_id, friend_user_id) values(?, ?), (?, ?)',
             //     array($myId, $yourId, $yourId, $myId));
 
