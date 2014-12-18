@@ -52,7 +52,7 @@ class AddUserController extends BaseController {
             // 给环信发送添加好友请求
             $emChatUtil = new EmChatUtil();
             $firstResultArr = $emChatUtil->addFriend($myAccount, $yourAccount);
-            print_r($firstResultArr);
+            // print_r($firstResultArr);
             if(!isset($firstResultArr['entities'])) {
                 DB::rollback();
                 return Constant::$RETURN_FAIL;
