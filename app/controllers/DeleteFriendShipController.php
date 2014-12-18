@@ -12,16 +12,16 @@ class DeleteFriendShipController extends BaseController {
 
     public function deleteFriendShip() {
         if($_SERVER['REQUEST_METHOD'] == "POST") {
-            if(!isset($_POST['my_phone_number']) || !isset($_POST['your_phone_number'])) {
+            if(!isset($_POST['my_username']) || !isset($_POST['your_username'])) {
                 return Constant::$RETURN_FAIL;
             }
 
-            $myPhoneNum = $_POST['my_phone_number'];
-            $yourPhoneNum = $_POST['your_phone_number'];
+            $myPhoneNum = $_POST['my_username'];
+            $yourPhoneNum = $_POST['your_username'];
 
             // 通过手机号来获取id号码
-            $myInfo = HwUser::whereRaw('phone_number = ?', array($myPhoneNum))->get();
-            $yourInfo = HwUser::whereRaw('phone_number = ?', array($yourPhoneNum))->get();
+            $myInfo = HwUser::whereRaw('sub_account = ?', array($myPhoneNum))->get();
+            $yourInfo = HwUser::whereRaw('sub_account = ?', array($yourPhoneNum))->get();
             if(count($myInfo) != 1 || count($yourInfo) != 1) {
                 echo("用户信息不存在");
                 return Constant::$RETURN_FAIL;
