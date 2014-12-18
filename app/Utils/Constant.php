@@ -28,6 +28,7 @@ class Constant {
     static $HAS_FRIEND = "already_friends";
     static $NOT_FRIEND = "not_friend";
 
+    static $NO_FRIEND = "no_friend";
 
 
 } 
