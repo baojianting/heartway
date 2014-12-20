@@ -5,7 +5,6 @@
       <change type="DELETED" beforePath="D:\CODE\phpstorm_code\heartway\app\document\~$务端接口文档.docx" afterPath="" />
       <change type="DELETED" beforePath="D:\CODE\phpstorm_code\heartway\app\document\~WRL0905.tmp" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/AddUserController.php" afterPath="$PROJECT_DIR$/app/controllers/AddUserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="heartway.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,11 +84,11 @@
       <file leaf-file-name="AddUserController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/AddUserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.9489051" vertical-offset="492" max-vertical-offset="2132">
-              <caret line="60" column="14" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.24087591" vertical-offset="1584" max-vertical-offset="2132">
+              <caret line="66" column="14" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
               <folding>
                 <element signature="e#6#85#0#PHP" expanded="true" />
-                <marker date="1419074668974" expanded="true" signature="1312:1400" placeholder="insert into ..." />
+                <marker date="1419075589764" expanded="true" signature="1312:1400" placeholder="insert into ..." />
               </folding>
             </state>
           </provider>
@@ -698,11 +697,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/AddUserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.9489051" vertical-offset="492" max-vertical-offset="2132">
-          <caret line="60" column="14" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.24087591" vertical-offset="1584" max-vertical-offset="2132">
+          <caret line="66" column="14" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
           <folding>
             <element signature="e#6#85#0#PHP" expanded="true" />
-            <marker date="1419074668974" expanded="true" signature="1312:1400" placeholder="insert into ..." />
+            <marker date="1419075589764" expanded="true" signature="1312:1400" placeholder="insert into ..." />
           </folding>
         </state>
       </provider>
