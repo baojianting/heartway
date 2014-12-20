@@ -48,7 +48,7 @@ class AddUserController extends BaseController {
                 return Constant::$HAS_FRIEND;
             }
 
-
+            /*
             // 给环信发送添加好友请求
             $emChatUtil = new EmChatUtil();
             $firstResultArr = $emChatUtil->addFriend($myAccount, $yourAccount);
@@ -58,7 +58,6 @@ class AddUserController extends BaseController {
                 return Constant::$RETURN_FAIL;
             }
 
-            /*
             $secondResultArr = $emChatUtil->addFriend($yourAccount, $myAccount);
             // print_r($secondResultArr);
             if(!isset($secondResultArr['entities'])) {
