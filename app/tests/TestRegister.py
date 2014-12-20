@@ -1,9 +1,9 @@
 import Util
 
-test_data = {'phone_number': 'baotest4', 'password': '1234'}
+test_data = {'phone_number': 'baotest1', 'password': '1234'}
 
-# requrl = 'http://localhost:8001/heartway/public/index.php/register/register'
-requrl = 'http://120.27.40.13:8001/heartway/public/index.php/register/register'
+requrl = 'http://localhost:8001/heartway/public/index.php/register/register'
+# requrl = 'http://120.27.40.13:8001/heartway/public/index.php/register/register'
 
 ut = Util.Util()
 
