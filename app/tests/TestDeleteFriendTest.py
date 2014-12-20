@@ -1,9 +1,9 @@
 import Util
 
-test_data = {'my_username': '1f9c26b6c7169a84daaee90eb98c012d', 'your_username': 'b031dae35b41001a0cca7de5a6ff4c5e'}
+test_data = {'my_username': '0e7ee19dfa912be9cfed9d775a049950', 'your_username': '847befa0535ac4fdbff57e78b1d8638f'}
 
-# requrl = 'http://localhost:8001/heartway/public/index.php/user/deleteFriend'
-requrl = 'http://120.27.40.13:8001/heartway/public/index.php/user/deleteFriend'
+requrl = 'http://localhost:8001/heartway/public/index.php/user/deleteFriend'
+# requrl = 'http://120.27.40.13:8001/heartway/public/index.php/user/deleteFriend'
 
 ut = Util.Util()
 

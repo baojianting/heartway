@@ -58,13 +58,14 @@ class DeleteFriendShipController extends BaseController {
                 DB::rollback();
                 return Constant::$RETURN_FAIL;
             }
+            /*
             $secondResultArr = $emChatUtil->delFriend($yourAccount, $myAccount);
             // print_r($secondResultArr);
             if(!isset($secondResultArr['entities'])) {
                 DB::rollback();
                 return Constant::$RETURN_FAIL;
             }
-
+            */
             // 返回成功，并且提交数据库
             DB::commit();
             return Constant::$RETURN_SUCCESS;
