@@ -53,4 +53,8 @@ Route::post("user/deleteFriend", "DeleteFriendShipController@deleteFriendShip");
 
 // 通过我的username来获取好友列表
 Route::post("user/getMyFriend", "GetMyFriendsController@getMyFriends");
-Route::post("user/getMyFriend", "GetMyFriendsController@getMyFriends");
+// Route::get("user/getMyFriend", "GetMyFriendsController@getMyFriends");
+
+// 更改用户信息
+Route::post("user/modify", "ModifyUserController@modUser");
+Route::get("user/modify", "ModifyUserController@modUser");
