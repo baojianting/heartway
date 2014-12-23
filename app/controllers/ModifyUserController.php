@@ -23,7 +23,7 @@ class ModifyUserController extends BaseController {
             $hasAvatar = true;
             $username = $_POST['username'];
 
-            if(!isset($_GET['nickname'])) {
+            if(!isset($_POST['nickname'])) {
                 $hasNickname = false;
             }
             if(!isset($_POST['signature'])) {
@@ -51,6 +51,7 @@ class ModifyUserController extends BaseController {
                 array_push($paramArr, $_POST['signature']);
             }
             if($hasNickname) {
+            	// echo('gggg');
                 $updateSql = $updateSql. 'nick_name = ?,';
                 array_push($paramArr, $_POST['nickname']);
             }
