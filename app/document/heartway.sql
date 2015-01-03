@@ -111,6 +111,63 @@ CREATE TABLE IF NOT EXISTS `heartway`.`hw_group_member` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `heartway`.`hw_route_area`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `heartway`.`hw_route_area` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `route_num` INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `heartway`.`hw_route`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `heartway`.`hw_route` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `route_description` VARCHAR(500) NOT NULL,
+  `route_location` VARCHAR(255) NULL,
+  `route_points` VARCHAR(510) NOT NULL,
+  `is_lock` BINARY NOT NULL DEFAULT false,
+  `participate_number` INT NOT NULL DEFAULT 0,
+  `route_area_id` INT NOT NULL,
+  `route_title` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`, `route_area_id`),
+  INDEX `fk_hw_route_hw_route_area1_idx` (`route_area_id` ASC),
+  CONSTRAINT `fk_hw_route_hw_route_area1`
+    FOREIGN KEY (`route_area_id`)
+    REFERENCES `heartway`.`hw_route_area` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `heartway`.`hw_rankinglist`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `heartway`.`hw_rankinglist` (
+  `hw_user_id` INT NOT NULL,
+  `hw_route_id` INT NOT NULL,
+  `average_speed` INT NOT NULL,
+  `route_points` VARCHAR(510) NOT NULL,
+  PRIMARY KEY (`hw_user_id`, `hw_route_id`),
+  INDEX `fk_hw_user_has_hw_route_hw_route1_idx` (`hw_route_id` ASC),
+  INDEX `fk_hw_user_has_hw_route_hw_user1_idx` (`hw_user_id` ASC),
+  CONSTRAINT `fk_hw_user_has_hw_route_hw_user1`
+    FOREIGN KEY (`hw_user_id`)
+    REFERENCES `heartway`.`hw_user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_hw_user_has_hw_route_hw_route1`
+    FOREIGN KEY (`hw_route_id`)
+    REFERENCES `heartway`.`hw_route` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

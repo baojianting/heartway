@@ -24,11 +24,16 @@ class Constant {
      */
     static $RETURN_SUCCESS = "success";
     static $RETURN_FAIL = "fail";
+    static $NO_DATA = "no_data";
+
 
     static $HAS_FRIEND = "already_friends";
     static $NOT_FRIEND = "not_friend";
 
     static $NO_FRIEND = "no_friend";
 
+    // 一些数据库中的常量定义
+    static $ROUTE_LOCK = 1;
+    static $ROUTE_UNLOCK = 0;
 
 } 

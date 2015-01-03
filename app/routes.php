@@ -58,3 +58,21 @@ Route::post("user/getMyFriend", "GetMyFriendsController@getMyFriends");
 // 更改用户信息
 Route::post("user/modify", "ModifyUserController@modUser");
 Route::get("user/modify", "ModifyUserController@modUser");
+
+
+// 获取排行榜分类
+Route::post("rankinglist/routeArea", "RankinglistController@getRouteArea");
+Route::get("rankinglist/routeArea", "RankinglistController@getRouteArea");
+
+// 获取某一个地区的路线
+Route::post("rankinglist/routeOfArea", "RankinglistController@routeOfArea");
+Route::get("rankinglist/routeOfArea", "RankinglistController@routeOfArea");
+
+
+// 获取某一个路线的排行榜
+Route::post("rankinglist/getRankinglistOfRoute", "RankinglistController@getRankinglistOfRoute");
+Route::get("rankinglist/getRankinglistOfRoute", "RankinglistController@getRankinglistOfRoute");
+
+// 上传个人成绩
+Route::post("rankinglist/upload", "RankinglistController@upload");
+Route::get("rankinglist/upload", "RankinglistController@upload");
