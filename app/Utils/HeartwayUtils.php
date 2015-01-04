@@ -51,7 +51,38 @@ class HeartwayUtils {
 
     public static function getTotalDistance($route_points) {
 
-        return 0;
+        $pointsArr = self::routePointsStrToArray($route_points);
+        if(count($pointsArr) <= 1) {
+            return 0;
+        } else {
+
+            $total = 0;
+            for($i = 0; $i < count($pointsArr) - 1; $i++) {
+                $total += self::getDistance($pointsArr[$i], $pointsArr[$i + 1]);
+            }
+
+            return $total;
+        }
+
+    }
+
+    private static function getDistance($point1, $point2)
+    {
+        $earthRadius = 6367000; //approximate radius of earth in meters
+
+        $lat1 = ($point1["latitude"] * pi() ) / 180;
+        $lng1 = ($point1["longitude"] * pi() ) / 180;
+
+        $lat2 = ($point2["latitude"]  * pi() ) / 180;
+        $lng2 = ($point2["longitude"] * pi() ) / 180;
+
+        $calcLongitude = $lng2 - $lng1;
+        $calcLatitude = $lat2 - $lat1;
+        $stepOne = pow(sin($calcLatitude / 2), 2) + cos($lat1) * cos($lat2) * pow(sin($calcLongitude / 2), 2);
+        $stepTwo = 2 * asin(min(1, sqrt($stepOne)));
+        $calculatedDistance = $earthRadius * $stepTwo;
+
+        return round($calculatedDistance);
     }
 }
 
