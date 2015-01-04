@@ -17,4 +17,41 @@ class HeartwayUtils {
     public static function md5($str) {
         return md5($str);
     }
-} 
+
+    public static function routePointsStrToArray($routePoints) {
+        $pointsArr = array();
+        $splitArr = explode("),", $routePoints);
+        foreach($splitArr as $splitPiece) {
+            if($splitPiece == "") {
+                continue;
+            }
+
+            $pointArr = array();
+            // str_replace(array("(", ")", ","), " ", $splitPiece);
+            $sArr = explode(",", $splitPiece);
+            if(count($sArr) != 2) {
+                continue;
+            }
+            $lan = trim(str_replace(array("(", ")"), " ", $sArr[0]));
+            if($lan != "") {
+                // array_push($pointArr, $fixS);
+                $pointArr["longitude"] = $lan;
+            }
+
+            $long = trim(str_replace(array("(", ")"), " ", $sArr[1]));
+            if($long != "") {
+                // array_push($pointArr, $fixS);
+                $pointArr["latitude"] = $long;
+            }
+            // if(count($pointArr))
+            array_push($pointsArr, $pointArr);
+        }
+        return $pointsArr;
+    }
+
+    public static function getTotalDistance($route_points) {
+
+        return 0;
+    }
+}
+

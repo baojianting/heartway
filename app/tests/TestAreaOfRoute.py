@@ -1,6 +1,6 @@
 import Util
 
-test_data = {'route_area_id': '0'}
+test_data = {'route_area_id': '1'}
 requrl = 'http://localhost:8001/heartway/public/index.php/rankinglist/routeOfArea'
 # requrl = 'http://120.27.40.13:8001/heartway/public/index.php/rankinglist/routeOfArea'
 

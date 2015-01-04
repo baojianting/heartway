@@ -7,6 +7,7 @@
  */
 
 require_once __DIR__. "/../Utils/Constant.php";
+require_once __DIR__. "/../Utils/HeartwayUtils.php";
 
 class RankinglistController extends BaseController {
 
@@ -27,6 +28,7 @@ class RankinglistController extends BaseController {
                 $arr["id"] = $area->id;
                 $arr["name"] = $area->name;
                 $arr["route_num"] = $area->route_num;
+                $arr["picture"] = $area->picture;
                 array_push($retArr, $arr);
             }
 
@@ -59,10 +61,13 @@ class RankinglistController extends BaseController {
                     $arr["id"] = $route->id;
                     $arr["route_description"] = $route->route_description;
                     $arr["route_location"] = $route->route_location;
-                    $arr["route_points"] = $route->route_points;
+                    $arr["route_points"] = HeartwayUtils::routePointsStrToArray($route->route_points);
                     $arr["participate_number"] = $route->participate_number;
                     $arr["route_title"] = $route->route_title;
                     $arr["route_area_id"] = $route->route_area_id;
+                    $arr["route_length"] = $route->route_length;
+                    $arr["create_time"] = $route->create_time;
+                    $arr["route_type"] = $route->route_type;
                     array_push($retArr, $arr);
                 }
                 return json_encode($retArr);
@@ -90,7 +95,7 @@ class RankinglistController extends BaseController {
                 $retSize = $_POST["page_num"];
             }
 
-            $datas = DB::select("select r.average_speed, r.route_points, u.id, u.nick_name from hw_user u, hw_rankinglist r where
+            $datas = DB::select("select total_time, total_distance, u.avatar, r.average_speed, r.route_points, u.id, u.nick_name from hw_user u, hw_rankinglist r where
                   r.hw_route_id = ? and hw_user_id = u.id order by average_speed desc limit ?, ?", array($routeId,
                   0, $retSize));
             if(!isset($datas)) {
@@ -105,7 +110,10 @@ class RankinglistController extends BaseController {
                     $arr["id"] = $data->id;
                     $arr["nick_name"] = $data->nick_name;
                     $arr["average_speed"] = $data->average_speed;
-                    $arr["route_points"] = $data->route_points;
+                    $arr["route_points"] = HeartwayUtils::routePointsStrToArray($data->route_points);
+                    $arr["avatar"] = $data->avatar;
+                    $arr["total_time"] = $data->total_time;
+                    $arr["total_distance"] = $data->total_distance;
                     array_push($retArr, $arr);
                 }
                 return json_encode($retArr);
@@ -121,7 +129,7 @@ class RankinglistController extends BaseController {
         if($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if(!isset($_POST["user_id"]) || !isset($_POST["route_id"]) || !isset($_POST["average_speed"])
-                    || !isset($_POST["route_points"])) {
+                    || !isset($_POST["route_points"]) || !isset($_POST["total_time"])) {
                 return Constant::$RETURN_FAIL;
             }
 
@@ -129,7 +137,7 @@ class RankinglistController extends BaseController {
             $routeId = $_POST["route_id"];
             $averageSpeed = $_POST["average_speed"];
             $routePoints = $_POST["route_points"];
-
+            $totalTime = $_POST["total_time"];
 
             try {
                 $rankinglist = new HwRankinglist();
@@ -137,6 +145,8 @@ class RankinglistController extends BaseController {
                 $rankinglist->hw_route_id = $routeId;
                 $rankinglist->average_speed = $averageSpeed;
                 $rankinglist->route_points = $routePoints;
+                $rankinglist->total_time = $totalTime;
+                $rankinglist->total_distance = HeartwayUtils::getTotalDistance($routePoints);
                 $rankinglist->save();
 
                 return Constant::$RETURN_SUCCESS;
