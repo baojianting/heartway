@@ -29,6 +29,7 @@ class RankinglistController extends BaseController {
                 $arr["name"] = $area->name;
                 $arr["route_num"] = $area->route_num;
                 $arr["picture"] = $area->picture;
+                $arr["description"] = $area->detail;
                 array_push($retArr, $arr);
             }
 
