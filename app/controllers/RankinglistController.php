@@ -129,29 +129,34 @@ class RankinglistController extends BaseController {
     public function upload() {
         if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            if(!isset($_POST["user_id"]) || !isset($_POST["route_id"]) || !isset($_POST["average_speed"])
+            if(!isset($_POST["username"]) || !isset($_POST["route_id"]) || !isset($_POST["average_speed"])
                     || !isset($_POST["route_points"]) || !isset($_POST["total_time"])) {
                 return Constant::$RETURN_FAIL;
             }
 
-            $userId = $_POST["user_id"];
+            $userName = $_POST["username"];
             $routeId = $_POST["route_id"];
             $averageSpeed = $_POST["average_speed"];
             $routePoints = $_POST["route_points"];
             $totalTime = $_POST["total_time"];
-
-            try {
+            // echo $userName. " ". $routeId. " ". $averageSpeed. " ".$routePoints." ".$totalTime;
+           try {
                 $rankinglist = new HwRankinglist();
-                $rankinglist->hw_user_id = $userId;
+                $user = HwUser::whereRaw("sub_account = ?", array($userName))->firstOrFail();
+                // print_r($user);
+                // print($user->id);
+                $rankinglist->hw_user_id = $user->id;
                 $rankinglist->hw_route_id = $routeId;
                 $rankinglist->average_speed = $averageSpeed;
                 $rankinglist->route_points = $routePoints;
                 $rankinglist->total_time = $totalTime;
                 $rankinglist->total_distance = HeartwayUtils::getTotalDistance($routePoints);
+                // print HeartwayUtils::getTotalDistance($routePoints);
                 $rankinglist->save();
 
                 return Constant::$RETURN_SUCCESS;
             } catch(Exception $e) {
+                // print $e->getTraceAsString();
                 return Constant::$RETURN_FAIL;
             }
 

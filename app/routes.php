@@ -76,3 +76,10 @@ Route::get("rankinglist/getRankinglistOfRoute", "RankinglistController@getRankin
 // 上传个人成绩
 Route::post("rankinglist/upload", "RankinglistController@upload");
 Route::get("rankinglist/upload", "RankinglistController@upload");
+
+
+App::error(function(Exception $e)
+{
+    require_once __DIR__. "Utils/Constant.php";
+    return Constant::$RETURN_FAIL;
+});
