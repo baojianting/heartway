@@ -167,4 +167,37 @@ class RankinglistController extends BaseController {
             return Constant::$RETURN_FAIL;
         }
     }
+
+    public function uploadCustomInfo() {
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            if(!isset($_POST["username"]) || !isset($_POST["location"]) || !isset($_POST["total_time"]) || !isset($_POST["route_points"])
+                || !isset($_POST["route_type"]) || !isset($_POST["average_speed"])) {
+                return Constant::$RETURN_FAIL;
+            }
+            $username = $_POST["username"];
+            $location = $_POST["location"];
+            $totalTime = $_POST["total_time"];
+            $routePoints = $_POST["route_points"];
+            $routeType = $_POST["route_type"];
+            $averageSpeed = $_POST["average_speed"];
+
+            try {
+                $hwCustomRoute = new HwCustomRoute();
+                $hwCustomRoute->username = $username;
+                $hwCustomRoute->location = $location;
+                $hwCustomRoute->total_time = $totalTime;
+                $hwCustomRoute->route_points = $routePoints;
+                $hwCustomRoute->route_type = $routeType;
+                $hwCustomRoute->total_distance = HeartwayUtils::getTotalDistance($routePoints);
+                $hwCustomRoute->average_speed = $averageSpeed;
+                $hwCustomRoute->save();
+                return Constant::$RETURN_SUCCESS;
+            } catch(Exception $e) {
+                return Constant::$RETURN_FAIL;
+            }
+
+        } else {
+            return Constant::$RETURN_FAIL;
+        }
+    }
 }

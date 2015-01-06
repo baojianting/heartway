@@ -78,6 +78,10 @@ Route::post("rankinglist/upload", "RankinglistController@upload");
 Route::get("rankinglist/upload", "RankinglistController@upload");
 
 
+// 上传个人成绩
+Route::post("rankinglist/uploadCustomInfo", "RankinglistController@uploadCustomInfo");
+Route::get("rankinglist/uploadCustomInfo", "RankinglistController@uploadCustomInfo");
+
 App::error(function(Exception $e)
 {
     require_once __DIR__. "Utils/Constant.php";
