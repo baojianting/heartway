@@ -53,7 +53,7 @@ class LoginController extends BaseController {
                 $dataArr['user_name'] = $myUserName;
                 $dataArr['nick_name'] = $myNickName;
                 $dataArr['password'] = $myPassword;
-                $dataArr['avatar'] = $myAvatar;
+                $dataArr['avatar'] = 'http://'.$_SERVER['HTTP_HOST'].'/heartway-avatar/'.$myAvatar;
                 $dataArr['gender'] = $myGender;
                 $dataArr['signature'] = $mySignature;
 
@@ -67,8 +67,8 @@ class LoginController extends BaseController {
                     foreach($friends as $friend) {
                         $friendArr = array();
                         $friendArr['nick_name'] = $friend->nick_name;
-                        $friendArr['avatar'] = $friend->avatar;
-                        $friendArr['gender'] = $friend->gender;
+                        $friendArr['avatar'] = 'http://'.$_SERVER['HTTP_HOST'].'/heartway-avatar/'.$friend->avatar;
+			$friendArr['gender'] = $friend->gender;
                         if(!isset($friend->signature) || empty($friend->signature)) {
                             $friendArr['signature'] = "";
                         } else {

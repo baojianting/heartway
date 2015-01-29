@@ -31,7 +31,7 @@ class GetMyFriendsController extends BaseController {
             foreach($myFriends as $friend) {
                 $friendArr = array();
                 $friendArr['nick_name'] = $friend->nick_name;
-                $friendArr['avatar'] = $friend->avatar;
+                $friendArr['avatar'] = 'http://'.$_SERVER['HTTP_HOST'].'/heartway-avatar/'.$friend->avatar;
                 $friendArr['gender'] = $friend->gender;
                 if(!isset($friend->signature) || empty($friend->signature)) {
                     $friendArr['signature'] = "";

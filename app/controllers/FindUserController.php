@@ -34,7 +34,7 @@ class FindUserController extends BaseController {
                     $userArr['signature'] = $users[0]->signature;
                 }
                 $userArr['gender'] = $users[0]->gender;
-                $userArr['avatar'] = $users[0]->avatar;
+                $userArr['avatar'] = 'http://'.$_SERVER['HTTP_HOST'].'/heartway-avatar/'.$users[0]->avatar;
                 $userArr['user_name'] = $users[0]->sub_account;
 
                 return json_encode($userArr);

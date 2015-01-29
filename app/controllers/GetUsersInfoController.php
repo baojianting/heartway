@@ -81,7 +81,7 @@ class GetUsersInfoController extends BaseController {
                     $userArr['signature'] = $user->signature;
                 }
                 $userArr['gender'] = $user->gender;
-                $userArr['avatar'] = $user->avatar;
+                $userArr['avatar'] = 'http://'.$_SERVER['HTTP_HOST'].'/heartway-avatar/'.$user->avatar;
                 $userArr['sub_account'] = $user->sub_account;
                 array_push($returnArr, $userArr);
             }
